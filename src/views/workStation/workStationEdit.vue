@@ -1,5 +1,7 @@
 <template>
-<div id="workStationEdit"></div>
+<div id="workStationEdit">
+    <h2>work edit</h2>
+</div>
 </template>
 
 <script>

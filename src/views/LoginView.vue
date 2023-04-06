@@ -16,7 +16,11 @@ import {ElMessage} from 'element-plus'
 
 export default {
     name: "LoginView",
-
+    computed: {
+        username() {
+            return this.$router.params.username
+        }
+    },
     setup() {
         const login = '登录';
         const register = '注册';
@@ -46,6 +50,7 @@ export default {
         };
         const subRegister = () => {
             open3()
+            // router.push({name:'about',param: { userName}})
             router.push('/register')
         }
         return {

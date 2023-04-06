@@ -1,11 +1,26 @@
 <script setup>
 import homeChildren from "@/router/homeChildren";
+import router from '@/router'
+
+const subRedirct = (path1, path2) => {
+    console.log('/' + path1 + '/' + path2)
+    router.push('/' + path1 + '/' + path2)
+}
+const backToHome = () => {
+    router.push('/');
+}
 </script>
 
 <template>
     <div class="common-layout">
         <el-container>
-            <el-header>Header</el-header>
+            <el-header>
+                <el-button @click="backToHome()">
+                    <span>
+                        Header
+                    </span>
+                </el-button>
+            </el-header>
             <el-container>
                 <el-aside width="200px">
                     <el-row class="tac">
@@ -16,56 +31,36 @@ import homeChildren from "@/router/homeChildren";
                                     class="el-menu-vertical-demo"
                                     default-active="2"
                                     text-color="#fff"
-                                    @open="handleOpen"
-                                    @close="handleClose"
+                                    router="true"
                             >
-                                <el-sub-menu index="1">
-                                    <template #title>
-                                        <el-icon>
-                                            <location/>
-                                        </el-icon>
-                                        <span>Navigator One</span>
-                                    </template>
-                                    <el-menu-item-group title="Group One">
-                                        <el-menu-item index="1-1">item one</el-menu-item>
-                                        <el-menu-item index="1-2">item two</el-menu-item>
-                                    </el-menu-item-group>
-                                    <el-menu-item-group title="Group Two">
-                                        <el-menu-item index="1-3">item three</el-menu-item>
-                                    </el-menu-item-group>
-                                    <el-sub-menu index="1-4">
-                                        <template #title>item four</template>
-                                        <el-menu-item index="1-4-1">item one</el-menu-item>
+                                <div v-for="subRouter in homeChildren" :key="subRouter">
+                                    <el-sub-menu v-if="subRouter.children != null" v-bind:index="subRouter.path">
+                                        <template #title>
+                                            <el-icon>
+                                                <User/>
+                                            </el-icon>
+                                            <span>{{ subRouter.name }}</span>
+                                        </template>
+                                        <el-menu-item
+                                                v-for="secondRouter in subRouter.children"
+                                                :index="'/'+subRouter.path+'/'+secondRouter.path"
+                                                :key="secondRouter.path"
+                                        >{{ secondRouter.name }}
+                                        </el-menu-item>
                                     </el-sub-menu>
-                                </el-sub-menu>
-                                <el-menu-item index="2">
-                                    <el-icon>
-                                        <icon-menu/>
-                                    </el-icon>
-                                    <span>Navigator Two</span>
-                                </el-menu-item>
-                                <el-menu-item index="3" disabled>
-                                    <el-icon>
-                                        <document/>
-                                    </el-icon>
-                                    <span>Navigator Three</span>
-                                </el-menu-item>
-                                <el-menu-item index="4">
-                                    <el-icon>
-                                        <setting/>
-                                    </el-icon>
-                                    <span>Navigator Four</span>
-                                </el-menu-item>
+                                    <el-menu-item v-else-if="subRouter.children == null" :index="'/'+subRouter.path">
+                                        <el-icon>
+                                            <EditPen/>
+                                        </el-icon>
+                                        <span>{{ subRouter.name }}</span>
+                                    </el-menu-item>
+                                </div>
                             </el-menu>
                         </el-col>
                     </el-row>
                 </el-aside>
                 <el-main>
-                    <li v-for="item in homeChildren" v-bind:key="item">{{item.name}}
-                     <span v-if="item.children !== null">
-                         <li v-for="itemChildren in item.children" v-bind:key="itemChildren">{{itemChildren.name}}</li>
-                     </span>
-                    </li>
+                    <router-view></router-view>
                 </el-main>
             </el-container>
         </el-container>
@@ -75,12 +70,14 @@ import homeChildren from "@/router/homeChildren";
 <style scoped>
 .el-main {
     min-height: 600px;
-    background-color:darkgrey;
+    background-color: darkgrey;
 }
-.el-aside{
+
+.el-aside {
     min-height: 600px;
     background-color: aquamarine;
 }
+
 .el-menu {
     min-height: 600px;
 }

@@ -15,7 +15,7 @@ let person = reactive({
     },
     age: {
         key:'年龄',
-        value: 0,
+        value: '',
     },
     factory: {
         key:'工厂',

@@ -1,105 +1,157 @@
 <template>
-    <el-scrollbar max-height="200px">
-        <div style="margin: 20px"/>
-        <el-form
-                :label-position="labelPosition"
-                :model="formLabelAlign"
-                label-width="100px"
-                style="max-width: 460px;"
-        >
-            <el-form-item>
-                <el-col :span="8">
-                    <el-form-item :label="person.name.key">
-                        <el-input v-model="person.name.value" placeholder="请输入你的姓名"/>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="1">
-                    <div/>
-                </el-col>
-                <el-col :span="6">
-                    <el-form-item :label="person.age.key"
-                                  :rules="[
-                                      {required:true,message: 'age is required'},
-                                      {type: 'number',message: 'age must be a number'}
-                                  ]"
-                    >
-                        <el-input v-model.number="person.age.value" placeholder="请输入你的年龄"/>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="1">
-                    <div/>
-                </el-col>
-                <el-col :span="8">
-                    <el-form-item :label="person.gender.key">
-                        <el-radio-group v-model="person.gender.value">
-                            <el-radio label="男"/>
-                            <el-radio label="女"/>
-                        </el-radio-group>
-                    </el-form-item>
-                </el-col>
-            </el-form-item>
-            <el-form-item>
-                <el-col :span="11">
-                    <el-form-item :label="person.factory.key">
-                        <el-select v-model="person.factory.value" placeholder="请选择工厂">
-                            <el-option-group>
-                                <el-option label="smt">smt</el-option>
-                                <el-option label="hud">hud</el-option>
-                                <el-option label="cms">cms</el-option>
-                            </el-option-group>
-                        </el-select>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="2">
-                    <div/>
-                </el-col>
-                <el-col :span="11">
-                    <el-form-item :label="person.department.key">
-                        <el-select v-model="person.department.value" placeholder="请选择部门">
-                            <el-option-group>
-                                <el-option label="ipqc">ipac</el-option>
-                                <el-option label="打螺丝">daluosi</el-option>
-                                <el-option label="inputwhite">滴白胶</el-option>
-                            </el-option-group>
-                        </el-select>
-                    </el-form-item>
-                </el-col>
-            </el-form-item>
-            <el-form-item :label="person.role.key">
-                <el-checkbox-group v-model="person.role.value">
-                    <el-checkbox label="Online activities" name="type" />
-                    <el-checkbox label="Promotion activities" name="type" />
-                    <el-checkbox label="Offline activities" name="type" />
-                    <el-checkbox label="Simple brand exposure" name="type" />
-                </el-checkbox-group>
-            </el-form-item>
-            <el-form-item :label="person.email.key">
-                <el-input v-model="person.email.value"/>
-            </el-form-item>
-            <el-form-item :label="person.telephone.key">
-                <el-input v-model="person.telephone.value"/>
-            </el-form-item>
-        </el-form>
-    </el-scrollbar>
+  <el-scrollbar height="300px">
+    <el-form
+      ref="ruleFormRef"
+      :model="ruleForm"
+      :rules="rules"
+      label-width="120px"
+      class="demo-ruleForm"
+      :size="formSize"
+      status-icon
+    >
+      <el-form-item :label="person.name.key" prop="name">
+        <el-input v-model="ruleForm.name" />
+      </el-form-item>
+      <el-form-item :label="person.factory.key" prop="region">
+        <el-select v-model="ruleForm.region" placeholder="Activity zone">
+          <el-option label="Zone one" value="shanghai" />
+          <el-option label="Zone two" value="beijing" />
+        </el-select>
+      </el-form-item>
+      <el-form-item :label="person.department.key" prop="count">
+        <el-select-v2
+          v-model="ruleForm.count"
+          placeholder="Activity count"
+          :options="options"
+        />
+      </el-form-item>
+      <el-form-item :label="person.password.key" prop="delivery">
+        <el-switch v-model="ruleForm.delivery" />
+      </el-form-item>
+      <el-form-item :label="person.role.key" prop="type">
+        <el-checkbox-group v-model="ruleForm.type">
+          <el-checkbox label="Online activities" name="type" />
+          <el-checkbox label="Promotion activities" name="type" />
+          <el-checkbox label="Offline activities" name="type" />
+          <el-checkbox label="Simple brand exposure" name="type" />
+        </el-checkbox-group>
+      </el-form-item>
+      <el-form-item :label="person.gender.key" prop="resource">
+        <el-radio-group v-model="ruleForm.resource">
+          <el-radio label="Sponsorship" />
+          <el-radio label="Venue" />
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="submitForm(ruleFormRef)">
+          Create
+        </el-button>
+        <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
+      </el-form-item>
+    </el-form>
+  </el-scrollbar>
 </template>
 
-<script>
-import {reactive} from 'vue'
-import person from "@/pojo/person";
+<script setup>
+import { reactive, ref } from "vue";
+import person from "../pojo/person";
 
-export default {
-    setup() {
-        const labelPosition = 'top'
-        const formLabelAlign = reactive({
-            name: '',
-            region: '',
-            type: '',
-        })
-        return {
-            labelPosition,
-            formLabelAlign,
-            person,
-        }
+const formSize = ref("default");
+const ruleFormRef = ref();
+const ruleForm = reactive({
+  name: "Hello",
+  region: "",
+  count: "",
+  date1: "",
+  date2: "",
+  delivery: false,
+  type: [],
+  resource: "",
+  desc: "",
+});
+
+const rules = reactive({
+  name: [
+    {
+      required: true,
+      message: "Please input Activity name",
+      trigger: "blur",
+    },
+    { min: 3, max: 5, message: "Length should be 3 to 5", trigger: "blur" },
+  ],
+  region: [
+    {
+      required: true,
+      message: "Please select Activity zone",
+      trigger: "change",
+    },
+  ],
+  count: [
+    {
+      required: true,
+      message: "Please select Activity count",
+      trigger: "change",
+    },
+  ],
+  date1: [
+    {
+      type: "date",
+      required: true,
+      message: "Please pick a date",
+      trigger: "change",
+    },
+  ],
+  date2: [
+    {
+      type: "date",
+      required: true,
+      message: "Please pick a time",
+      trigger: "change",
+    },
+  ],
+  type: [
+    {
+      type: "array",
+      required: true,
+      message: "Please select at least one activity type",
+      trigger: "change",
+    },
+  ],
+  resource: [
+    {
+      required: true,
+      message: "Please select activity resource",
+      trigger: "change",
+    },
+  ],
+  desc: [
+    {
+      required: true,
+      message: "Please input activity form",
+      trigger: "blur",
+    },
+  ],
+});
+
+const submitForm = async (formEl) => {
+  if (!formEl) return;
+  await formEl.validate((valid, fields) => {
+    if (valid) {
+      console.log("submit!");
+    } else {
+      console.log("error submit!", fields);
     }
-}
+  });
+};
+
+const resetForm = (formEl) => {
+  if (!formEl) return;
+  formEl.resetFields();
+};
+
+const options = [
+  { value: "smt", label: "smt" },
+  { value: "cms", label: "cms" },
+  { value: "hud", label: "hud" },
+];
 </script>

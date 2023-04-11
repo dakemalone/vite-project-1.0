@@ -1,11 +1,17 @@
 <template>
     <div id="login">
-        用户名:
-        <el-input v-model="userName" type="info"></el-input>
-        密码:
-        <el-input v-model="passWord" type="password"></el-input>
-        <el-button :plain="true" @click="subLogin()" type="success">{{ login }}</el-button>
-        <el-button :plain="true" @click="subRegister()" type="info">{{ register }}</el-button>
+        <el-form style="max-width: 460px;min-height: 266px;">
+            <el-form-item label="用户名:">
+                <el-input v-model="userName" type="info"></el-input>
+            </el-form-item>
+            <el-form-item label="密码:">
+                <el-input v-model="passWord" type="password"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button :plain="true" @click="subRegister()" type="info">{{ register }}</el-button>
+                <el-button :plain="true" @click="subLogin()" type="success">{{ login }}</el-button>
+            </el-form-item>
+        </el-form>
     </div>
 </template>
 
@@ -68,8 +74,8 @@ export default {
 </script>
 
 <style scoped>
-#login {
-    margin: auto;
+.el-form {
+    margin: 15% auto;
     width: 50%;
     height: 50%;
     border: 3px solid green;

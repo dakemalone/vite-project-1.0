@@ -8,18 +8,82 @@ const homeChildren = [
         path: 'person',
         name: 'person',
         component: personView,
-        children: personChildren
+        children: personChildren,
+        meta:{
+            icon: 'Box'
+        }
     },
     {
         path: 'workStation',
         name: 'workStation',
         component: workStation,
-        children: workStationChildren
+        children: workStationChildren,
+        meta:{
+            icon: 'Printer'
+        }
+    },
+    {
+        path: 'workStation',
+        name: 'workStation',
+        component: workStation,
+        children: workStationChildren,
+        meta:{
+            icon: 'Printer'
+        }
+    },
+    {
+        path: 'workStation',
+        name: 'workStation',
+        component: workStation,
+        children: workStationChildren,
+        meta:{
+            icon: 'Printer'
+        }
+    },
+    {
+        path: 'workStation',
+        name: 'workStation',
+        component: workStation,
+        children: workStationChildren,
+        meta:{
+            icon: 'Printer'
+        }
+    },
+    {
+        path: 'workStation',
+        name: 'workStation',
+        component: workStation,
+        children: workStationChildren,
+        meta:{
+            icon: 'Printer'
+        }
+    },
+    {
+        path: 'workStation',
+        name: 'workStation',
+        component: workStation,
+        children: workStationChildren,
+        meta:{
+            icon: 'Printer'
+        }
+    },
+    {
+        path: 'workStation',
+        name: 'workStation',
+        component: workStation,
+        children: workStationChildren,
+        meta:{
+            icon: 'Printer'
+        }
     },
     {
         path: 'about',
         name: 'about',
         component: about,
-    }
+        meta:{
+            icon: 'Football'
+        }
+    },
+    
 ]
 export default homeChildren

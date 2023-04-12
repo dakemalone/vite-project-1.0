@@ -5,10 +5,7 @@
         <div class="grid-content ep-bg-purple">
           <div class="demo-image">
             <div class="block">
-              <el-image
-                src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
-                fit="contain"
-              ></el-image>
+              <img src="@/assets/logo.svg"/>
             </div>
           </div>
         </div>
@@ -30,11 +27,7 @@
 <script>
 export default {
   setup() {
-    const url =
-      "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg";
-    return {
-      url,
-    };
+    
   },
 };
 </script>

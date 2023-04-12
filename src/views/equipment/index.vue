@@ -1,8 +1,9 @@
 <template>
-  <div id="about">
-    关于这个网站
+  <div id="equipment">
+    <span>星期三</span>
   </div>
 </template>
+
 <script>
 export default {
 

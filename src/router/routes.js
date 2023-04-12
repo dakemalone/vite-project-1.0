@@ -1,9 +1,11 @@
-import personView from "@/views/person/PersonView.vue";
-import personChildren from "@/router/personChildren";
-import workStationChildren from "@/router/workStationChildren";
+import personView from "@/views/person/PersonView.vue"
+import personChildren from "@/router/personChildren"
+import workStationChildren from "@/router/workStationChildren"
 import workStation from "@/views/workStation/WorkStationView.vue"
 import about from "@/views/AboutView.vue"
-const homeChildren = [
+import equipment from '@/views/equipment/index.vue'
+
+const routes = [
     {
         path: 'person',
         name: 'person',
@@ -23,12 +25,11 @@ const homeChildren = [
         }
     },
     {
-        path: 'workStation',
-        name: 'workStation',
-        component: workStation,
-        children: workStationChildren,
+        path: 'equipment',
+        name: 'equipment',
+        component: equipment,
         meta:{
-            icon: 'Printer'
+            icon: 'Setting'
         }
     },
     {
@@ -83,7 +84,6 @@ const homeChildren = [
         meta:{
             icon: 'Football'
         }
-    },
-    
+    },   
 ]
-export default homeChildren
+export default routes

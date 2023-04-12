@@ -12,21 +12,32 @@
         router="true"
       >
         <template v-for="routes in homeChildren" v-bind:key="routes">
-          <el-sub-menu :index="routes.path">
-            <template #title>
+          <template v-if="routes.children != null">
+            <el-sub-menu :index="routes.path">
+              <template #title>
+                <el-icon>
+                  <component :is="routes.meta.icon"></component>
+                </el-icon>
+                <span>{{ routes.name }}</span>
+              </template>
+              <template v-if="routes.children != null">
+                <template v-for="croutes in routes.children" :key="croutes">
+                  <el-menu-item
+                    :index="'/' + routes.path + '/' + croutes.path"
+                    >{{ croutes.name }}</el-menu-item
+                  >
+                </template>
+              </template>
+            </el-sub-menu>
+          </template>
+          <template v-else>
+            <el-menu-item :index="'/' + routes.path">
               <el-icon>
                 <component :is="routes.meta.icon"></component>
               </el-icon>
               <span>{{ routes.name }}</span>
-            </template>
-            <template v-if="routes.children != null">
-              <template v-for="croutes in routes.children" :key="croutes">
-                <el-menu-item :index="'/' + routes.path + '/' + croutes.path">{{
-                  croutes.name
-                }}</el-menu-item>
-              </template>
-            </template>
-          </el-sub-menu>
+            </el-menu-item>
+          </template>
         </template>
       </el-menu>
     </el-col>
@@ -34,7 +45,7 @@
 </template>
 
 <script setup>
-import homeChildren from "@/router/homeChildren";
+import homeChildren from "@/router/routes";
 const handleOpen = (key, keyPath) => {
   console.log(key, keyPath);
 };
@@ -44,7 +55,6 @@ const handleClose = (key, keyPath) => {
 </script>
 
 <style scoped>
-
 .el-menu {
   min-height: 610px;
   max-height: 610px;

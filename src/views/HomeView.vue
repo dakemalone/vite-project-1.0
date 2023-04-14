@@ -1,6 +1,7 @@
 <script setup>
 import HeaderIndex from "@/components/header/headerIndex.vue";
 import MenuList from "@/components/list/menuList.vue";
+import TagList from "../layout/components/TagList.vue";
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import MenuList from "@/components/list/menuList.vue";
           <MenuList></MenuList>
         </el-aside>
         <el-main>
+          <!-- <TagList></TagList> 路由历史暂时不会用-->
           <router-view></router-view>
         </el-main>
       </el-container>

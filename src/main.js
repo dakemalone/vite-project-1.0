@@ -6,11 +6,16 @@ import 'element-plus/dist/index.css'
 import './assets/main.css'
 import { createPinia } from 'pinia'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+//引入axios vue-axios轻度封装 先导入axios 再导入vue-axios ，app.use(VueAxios,axios)
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 const app = createApp(App)
 
 app.use(router)
 app.use(element)
+//调用
+app.use(VueAxios,axios)
 
 //创建一个pinia，和vuex的store相类似
 const pinia = createPinia()

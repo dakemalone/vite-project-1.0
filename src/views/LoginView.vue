@@ -19,6 +19,7 @@
 import {ref} from "vue";
 import router from '../router'
 import {ElMessage} from 'element-plus'
+import { setToken } from '@/utils/token'
 
 export default {
     name: "LoginView",
@@ -51,6 +52,7 @@ export default {
                 router.push('/register')
             } else {
                 open2();
+                setToken({name:'dake',passWord:'12345'})
                 router.push('/');
             }
         };

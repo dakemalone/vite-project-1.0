@@ -1,5 +1,5 @@
 <template>
-  <div id="barEcharts" style="width: 600px; height: 400px"></div>
+  <div id="barEcharts"></div>
 </template>
 
 <script>
@@ -39,7 +39,32 @@ export default {
       tooltip: {},
       xAxis: { data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"] },
       yAxis: {},
-      series: [{ name: "销量", type: "bar", data: [5, 20, 36, 10, 10, 20] }],
+      series: [
+        {
+          name: "销量",
+          type: "bar",
+          data: [5, 20, 36, 10, 10, 20],
+          markPoint: {
+            data: [{ type: "max" }, { type: "min" }],
+          },
+        },
+      ],
+    });
+    myChart.resize({ width: 230, height: 230 });
+    // myChart.on("click", function (params) {
+    //   window.open(
+    //     "https://www.baidu.com/s?wd=" + encodeURIComponent(params.name)
+    //   );
+    // });
+    // 图例开关的行为只会触发 legendselectchanged 事件
+    myChart.on("legendselectchanged", function (params) {
+      // 获取点击图例的选中状态
+      var isSelected = params.selected[params.name]; // 在控制台中打印
+      console.log(
+        (isSelected ? "选中了" : "取消选中了") + "图例" + params.name
+      );
+      //打印所有图例的状态
+      console.log(params.selected);
     });
   },
 };

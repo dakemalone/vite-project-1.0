@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { getInfo, login } from "@/api/manager.js"
 import { setToken, removeToken } from "@/utils/token.js"
 
-export const store = defineStore('counter', {
+const store = defineStore('counter', {
     state: () => {
         return {
             user: {}, // 用户信息
@@ -27,6 +27,7 @@ export const store = defineStore('counter', {
         }
     },
     actions: {
+      // eslint-disable-next-line no-unused-vars
       async userLogin({ commit }, { username, password }) {
         try {
             let result = await login(username, password)
@@ -50,9 +51,11 @@ export const store = defineStore('counter', {
         },
         // 退出登录
         async logout({ commit }) {
-        removeToken()
-        commit("setUserInfo", {})
+            removeToken()
+            commit("setUserInfo", {})
         }
     }
        
   })
+
+  export default store

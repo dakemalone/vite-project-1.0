@@ -33,51 +33,6 @@ const routes = [
         }
     },
     {
-        path: 'workStation',
-        name: 'workStation',
-        component: workStation,
-        children: workStationChildren,
-        meta:{
-            icon: 'Printer'
-        }
-    },
-    {
-        path: 'workStation',
-        name: 'workStation',
-        component: workStation,
-        children: workStationChildren,
-        meta:{
-            icon: 'Printer'
-        }
-    },
-    {
-        path: 'workStation',
-        name: 'workStation',
-        component: workStation,
-        children: workStationChildren,
-        meta:{
-            icon: 'Printer'
-        }
-    },
-    {
-        path: 'workStation',
-        name: 'workStation',
-        component: workStation,
-        children: workStationChildren,
-        meta:{
-            icon: 'Printer'
-        }
-    },
-    {
-        path: 'workStation',
-        name: 'workStation',
-        component: workStation,
-        children: workStationChildren,
-        meta:{
-            icon: 'Printer'
-        }
-    },
-    {
         path: 'about',
         name: 'about',
         component: about,

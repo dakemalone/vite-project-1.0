@@ -1,17 +1,11 @@
 <template>
-    <div id="person">
-        <el-scrollbar max-height="560px">
-            <router-view></router-view>
-        </el-scrollbar>
-    </div>
+  <router-view></router-view>
 </template>
 
 <script>
 export default {
-    name: "PersionView"
-}
+  name: "PersionView",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

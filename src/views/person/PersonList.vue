@@ -1,6 +1,8 @@
 <template>
   <el-row id="personList">
-    <PersonTable></PersonTable>
+    <el-scrollbar max-height="560px">
+      <PersonTable></PersonTable>
+    </el-scrollbar>
     <el-button style="width: 100%" text @click="dialogVisible = true">
       添加人员
     </el-button>
@@ -21,12 +23,11 @@
 <script>
 import { reactive, ref } from "vue";
 import PersonForm from "@/components/PersonForm.vue";
-import PersonTable from "@/components/tables/personTable.vue"
-
+import PersonTable from "@/components/tables/personTable.vue";
 
 export default {
   name: "PersonList",
-  components: { PersonForm ,PersonTable},
+  components: { PersonForm, PersonTable },
   data() {
     return {
       checked: false,
@@ -52,9 +53,9 @@ export default {
     const handleDelete = (index, row) => {
       console.log(index, row);
     };
-    const dialogVisible = ref(false);  
+    const dialogVisible = ref(false);
     return {
-      person, 
+      person,
       handleDelete,
       handleEdit,
       dialogVisible,

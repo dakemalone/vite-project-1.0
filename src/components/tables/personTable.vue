@@ -1,48 +1,56 @@
 <template>
-  <div id="personTable">
-    <template v-for="data in tableData" :key="data">
-      <li>{{ data }}</li>
-    </template>
-
-    <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="boardBarcode" label="boardBarcode"></el-table-column>
-      <el-table-column prop="boardName" label="boardName"></el-table-column>
-      <el-table-column prop="boardName" label="boardName"></el-table-column>
+  <div id="personTable" style="width: 100%">
+    <el-table :data="tableData" style="width: 100%" height="540">
+      <el-table-column
+        prop="boardBarcode"
+        label="boardBarcode"
+        width="180"
+      ></el-table-column>
+      <el-table-column prop="boardName" label="boardName" width="180"></el-table-column>
+      <el-table-column prop="boardBarcode" label="boardBarcode" width="180"></el-table-column>
+      <el-table-column prop="elemntPosition" label="elemntPosition" width="180"></el-table-column>
+      <el-table-column prop="judgment" label="judgment" width="180"></el-table-column>
+      <el-table-column prop="workOrder" label="workOrder" width="180"></el-table-column>
     </el-table>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import { ref } from "vue";
 
 export default {
-  data(){
-    return {
-      tableData:[]
-    }
-  },
-  beforeCreate(){
-    var _this = this;
+  // data(){
+  //   return {
+  //     tableData:[]
+  //   }
+  // },
+  // beforeCreate(){
+  //   console.log('beforeCreated is start')
+  //   var _this = this;
+  //   axios.get("http://172.20.10.2:8080/sample").then((res) => {
+  //     // console.log(res.data)
+  //     for (let index = 0; index < res.data.length - 5; index++) {
+  //       // console.log(res.data[index])
+  //       const element = res.data[index];
+  //       _this.tableData.push(element);
+  //     }
+  //   });
+  // },
+  setup() {
+    console.log("setup is start");
+    const tableData = ref([]);
     axios.get("http://172.20.10.2:8080/sample").then((res) => {
       // console.log(res.data)
-      for (let index = 0; index < res.data.length - 5; index++) {
+      for (let index = 0; index < res.data.length; index++) {
         // console.log(res.data[index])
         const element = res.data[index];
-        _this.tableData.push(element);
+        tableData.value.push(element);
       }
     });
-  },
-  setup() {
-    // var tableData = [];
-    // axios.get("http://172.20.10.2:8080/sample").then((res) => {
-    //   // console.log(res.data)
-    //   for (let index = 0; index < res.data.length - 5; index++) {
-    //     // console.log(res.data[index])
-    //     const element = res.data[index];
-    //     tableData.push(element);
-    //   }
-    // });
-
+    return {
+      tableData,
+    };
     // const tableData = [
     //   {
     //     'date': "2016-05-03",
@@ -70,9 +78,6 @@ export default {
     //   },
     // ];
     // console.log(tableData);
-    // return {
-    //   tableData,
-    // };
   },
 };
 </script>

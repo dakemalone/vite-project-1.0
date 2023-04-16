@@ -16,7 +16,7 @@ import TagList from "../layout/components/TagList.vue";
         </el-aside>
         <el-main>
           <!-- <TagList></TagList> 路由历史暂时不会用-->
-          <router-view></router-view>
+          <router-view style="max-height: 560px;"></router-view>
         </el-main>
       </el-container>
     </el-container>
@@ -31,6 +31,7 @@ import TagList from "../layout/components/TagList.vue";
 .el-aside {
   min-height: 610px;
   max-height: 610px;
+  background-color: #545c64;
 }
 /*隐藏菜单滑动条*/
 .el-aside::-webkit-scrollbar {

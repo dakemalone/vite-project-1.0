@@ -26,7 +26,9 @@ import TagList from "../layout/components/TagList.vue";
 <style scoped>
 .el-main {
   min-height: 600px;
-  background-color: darkgrey;
+  border-top: white 1px solid;
+  border-right: white 1px solid;
+  border-bottom: white 1px solid;
 }
 .el-aside {
   min-height: 610px;

@@ -1,5 +1,5 @@
 <template>
-  <div id="pieEcharts" style="width: 600px; height: 600px"></div>
+  <div id="pieEcharts" style="width: 230px; height: 230px"></div>
 </template>
 
 <script>
@@ -23,7 +23,7 @@ export default {
           name: "访问来源",
           type: "pie",
           radius: "55%",
-          center: ["50%", "60%"],
+          center: ["50%", "50%"],
           data: [
             {
               value: 335,

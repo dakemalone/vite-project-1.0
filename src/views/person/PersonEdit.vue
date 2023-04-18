@@ -1,20 +1,24 @@
 <template>
-<div id="personEdit">
+  <div id="personEdit">
     <h2>person edit</h2>
-    <bar-echarts></bar-echarts>
-    <pie-echarts></pie-echarts>
-</div>
+    <el-row class="tac">
+      <el-col :span="12">
+        <bar-echarts></bar-echarts>
+      </el-col>
+      <el-col :span="12">
+        <pie-echarts></pie-echarts>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
-import barEcharts from '../../components/echarts/barEcharts.vue'
-import PieEcharts from '../../components/echarts/pieEcharts.vue'
+import barEcharts from "../../components/echarts/barEcharts.vue";
+import PieEcharts from "../../components/echarts/pieEcharts.vue";
 export default {
   components: { barEcharts, PieEcharts },
-    name: "PersonEdit"
-}
+  name: "PersonEdit",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

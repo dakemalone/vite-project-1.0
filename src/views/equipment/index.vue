@@ -1,11 +1,12 @@
 <template>
   <div id="equipment">
-    <span>星期三</span>
   </div>
 </template>
 
 <script>
+import checkTable from '../../components/checkTable/checkTable.vue'
 export default {
+  components: { checkTable },
 
 }
 </script>

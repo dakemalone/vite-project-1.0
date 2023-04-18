@@ -4,6 +4,7 @@ import workStationChildren from "@/router/workStationChildren"
 import workStation from "@/views/workStation/WorkStationView.vue"
 import about from "@/views/AboutView.vue"
 import equipment from '@/views/equipment/index.vue'
+import check from '@/views/check/checkIndex.vue'
 
 const routes = [
     {
@@ -30,6 +31,14 @@ const routes = [
         component: equipment,
         meta:{
             icon: 'Setting'
+        }
+    },
+    {
+        path: 'check',
+        name: 'check',
+        component: check,
+        meta:{
+            icon: 'Football'
         }
     },
     {

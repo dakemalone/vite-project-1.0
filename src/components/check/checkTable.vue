@@ -28,19 +28,20 @@ export default {
         minWidth: 60,
       },
       style: {
-        bgcolor: "#ffffff",
-        align: "left",
-        valign: "middle",
-        textwrap: false,
-        strike: false,
-        underline: false,
-        color: "#0a0a0a",
-        font: {
-          name: "Helvetica",
-          size: 10,
-          bold: false,
-          italic: false,
+        border: {
+          bottom: ['medium', '#fff'],
         },
+        color: "#ddd",
+        bgColor: "#eee",
+        font: {
+          italic: true,
+          size: 16,
+          name: "YaHei",
+          bold: true,
+        },
+        underline: true,
+        valign: "middle",
+        align: "center",
       },
     };
     onMounted(() => {
@@ -51,6 +52,7 @@ export default {
         .loadData({}) // load data
         .change((data) => {
           // save data to db
+          console.log(data)
         });
 
       // data validation

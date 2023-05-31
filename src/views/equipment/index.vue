@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import checkTable from '../../components/checkTable/checkTable.vue'
+import checkTable from '@/components/check/checkTable.vue'
 export default {
   components: { checkTable },
 

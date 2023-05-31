@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { getInfo, login } from "@/api/manager.js"
 import { setToken, removeToken } from "@/utils/token.js"
 
-const store = defineStore('counter', {
+export const useCounterStore = defineStore('counter', {
     state: () => {
         return {
             user: {}, // 用户信息
@@ -57,5 +57,3 @@ const store = defineStore('counter', {
     }
        
   })
-
-  export default store

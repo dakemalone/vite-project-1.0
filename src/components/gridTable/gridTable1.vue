@@ -1,60 +1,75 @@
 <template>
   <ag-grid-vue
-    style="width: 700px; height: 400px"
+    style="height: 300px"
     class="ag-theme-alpine"
     :columnDefs="columnDefs"
     :rowData="rowData"
   >
   </ag-grid-vue>
+
+  <!-- <el-table :data="rowData" border style="width: 100%">
+      <el-table-column prop="idsysline" label="ID" width="180" />
+      <el-table-column prop="line" label="Line" width="180" />
+      <el-table-column prop="region" label="Region" />
+    </el-table> -->
 </template>
 
 <script>
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import { AgGridVue } from "ag-grid-vue3";
+import { ref, toRefs } from "vue";
+import { linelist } from "@/api/test.js";
 
 export default {
   name: "App",
+  props: {
+    urlStr: String,
+  },
   components: {
     AgGridVue,
   },
-  setup() {
+
+  setup(props) {
+    const { urlStr } = toRefs(props);
+    console.log(`url:${urlStr.value}`);
+    let responseDate = ref([]);
+
+    let promiseResult = linelist();
+    promiseResult.then((res) => {
+      responseDate.value = res.data.data;
+    });
+    setTimeout(() => {
+      console.log(responseDate.value);
+    }, 1000);
+
     return {
       columnDefs: [
         {
-          headerName: "Make",
-          field: "make",
-          children: [
-            { headerName: "name", field: "name" },
-            { headerName: "sex", field: "sex" },
-          ],
-        },
-        { headerName: "Model", field: "model" },
-        { headerName: "Price", field: "price" },
-      ],
-      rowData: [
-        {
-          make: "Toyota",
-          model: "Celica",
-          price: 35000,
-          name: "dake",
-          sex: "MAN",
+          headerName: "序号",
+          cellRenderer: function (params) {
+            return parseInt(params.node.id) + 1;
+          },
+          cellStyle: {
+            // 设置本栏的CSS样式
+            "text-align": "left",
+            "text-indent": "20px",
+          },
         },
         {
-          make: "Ford",
-          model: "Mondeo",
-          price: 32000,
-          name: "dake",
-          sex: "MAN",
+          headerName: "品牌",
+          field: "idsysline",
         },
         {
-          make: "Porsche",
-          model: "Boxster",
-          price: 72000,
-          name: "dake",
-          sex: "MAN",
+          headerName: "类型",
+          field: "line",
+        },
+        {
+          headerName: "价格",
+          field: "region",
         },
       ],
+      rowData: responseDate,
     };
   },
 };

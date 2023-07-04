@@ -1,26 +1,33 @@
 <template>
   <div id="workStationList">
-    <h2>work list</h2>
     <grid-table-1></grid-table-1>
     <el-button type="success" @click="getstr()">success</el-button>
+    <span>{{ say }}</span>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import gridTable1 from '../../components/gridTable/gridTable1.vue';
+import gridTable1 from "../../components/gridTable/gridTable1.vue";
 export default {
   components: { gridTable1 },
   name: "workStationList",
-  created() {
-    axios.get("https://api.kanye.rest/").then((res) => {
-      console.log(res);
-    });
+  data() {
+    var say;
+    return {
+      say,
+    };
   },
-  methods:{
-    getstr(){
+  created() {
+    // axios.get("https://api.kanye.rest/").then((res) => {
+    //   console.log(res);
+    // });
+  },
+  methods: {
+    getstr() {
       axios.get("https://api.kanye.rest/").then((res) => {
-        console.log(res);
+        this.say = res.data;
+        return this.say;
       });
     },
   },

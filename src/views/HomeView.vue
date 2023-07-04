@@ -1,7 +1,6 @@
 <script setup>
 import HeaderIndex from "@/components/header/headerIndex.vue";
 import MenuList from "@/components/list/menuList.vue";
-import TagList from "../layout/components/TagList.vue";
 </script>
 
 <template>

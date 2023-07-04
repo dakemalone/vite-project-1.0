@@ -1,22 +1,14 @@
 <template>
-<div id="workStation">
-    <span>work station</span>
+  <div id="workStation">
     <router-view></router-view>
-</div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: "WorkStation",
-    setup(){
-        let arr = [1,2,3,4,];
-        return {
-            arr
-        }
-    }
-}
+  name: "WorkStation",
+  setup() {},
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

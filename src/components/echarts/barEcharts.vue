@@ -50,7 +50,7 @@ export default {
         },
       ],
     });
-    myChart.resize({ width: 230, height: 230 });
+    myChart.resize({ width: 300, height: 290 });
     // myChart.on("click", function (params) {
     //   window.open(
     //     "https://www.baidu.com/s?wd=" + encodeURIComponent(params.name)

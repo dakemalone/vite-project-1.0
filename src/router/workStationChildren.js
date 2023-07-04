@@ -3,12 +3,12 @@ import workStationList from "@/views/workStation/workStationList.vue";
 const workStationChildren = [
     {
         path: 'workStationEdit',
-        name: 'workStationEdit',
+        name: '工单列表',
         component: workStationEdit,
     },
     {
         path: 'workStationList',
-        name: 'workStationList',
+        name: '每日WIP',
         component: workStationList,
     }
 ]

@@ -70,7 +70,7 @@ const tableData = [
   min-height: 36px;
 }
 .el-table {
-  --el-table-border: 0px solid var(--el-table-border-color) !important;
+  --el-table-border: none !important;
 }
 .el-table .el-table__cell {
   padding: calc(1%) 0 !important;

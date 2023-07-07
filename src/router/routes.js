@@ -87,6 +87,11 @@ const routes = [
         },
         children: [
             {
+                path: 'materialBoard',
+                name: '物料看板',
+                component: () => import('@/views/material/materialBoard.vue')
+            },
+            {
                 path: 'orderMaterial',
                 name: '工单物料',
                 component: () => import('@/views/material/orderMaterial.vue')
@@ -124,7 +129,7 @@ const routes = [
             {
                 path: 'jigDetail',
                 name: '治具保养明细',
-                component: () => import('@/views/jig/jigDetail')
+                component: () => import('@/views/jig/jigDetail.vue')
             }
         ]
     },

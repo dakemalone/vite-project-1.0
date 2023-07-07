@@ -55,8 +55,7 @@ const handleClose = (key, keyPath) => {
 </script>
 
 <style scoped>
-.el-menu {
-  min-height: 610px;
-  max-height: 610px;
+.tac {
+  height: 100%;
 }
 </style>

@@ -14,15 +14,16 @@
           </template>
         </vxe-column>
         <vxe-column field="p1" title="印刷" width="80"></vxe-column>
-        <vxe-column field="p1" title="spi" width="80"></vxe-column>
-        <vxe-column field="p1" title="高速贴片" width="80"></vxe-column>
-        <vxe-column field="p1" title="多功能贴片" width="80"></vxe-column>
+        <vxe-column field="p2" title="spi" width="80"></vxe-column>
+        <vxe-column field="p3" title="高速贴片" width="80"></vxe-column>
+        <vxe-column field="p4" title="多功能贴片" width="80"></vxe-column>
         <vxe-column field="p1" title="2D AOI" width="80"></vxe-column>
         <vxe-column field="p1" title="回流炉" width="80"></vxe-column>
         <vxe-column field="p1" title="3D AOI" width="80"></vxe-column>
         <vxe-column field="p1" title="AXI" width="80"></vxe-column>
         <vxe-column field="p2" title="ICT" width="80">
           <template #default="{ row }">
+            {{ row.p1 + row.p2 + row.p3 + row.p4 }}
             <vxe-button>删除</vxe-button>
           </template>
         </vxe-column>
@@ -31,7 +32,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref } from "vue";
 
 const tableData = ref([
@@ -40,7 +41,9 @@ const tableData = ref([
     order: "10051231",
     model: "PCA-VLWH001_P-01",
     p1: 14,
-    p2: "Shenzhen",
+    p2: 8,
+    p3: 362,
+    p4: 90,
   },
 ]);
 </script>
